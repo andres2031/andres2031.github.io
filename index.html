@@ -4,42 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contador de Clicks</title>
-    <style>
-        body {
-            background-color: green; /* Establece el color de fondo verde */
-            color: white; /* Cambia el color del texto a blanco para que sea legible en el fondo verde */
-            font-family: Arial, sans-serif; /* Cambia la fuente del texto */
-            padding: 20px; /* Añade espacio alrededor del contenido para mejorar la legibilidad */
+    <!-- Agregar enlaces a Bootstrap CSS y JavaScript -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <h1>Contador de Clicks</h1>
+    
+    <button id="boton" class="btn btn-primary" data-toggle="modal" data-target="#videoModal">Haz clic aquí</button>
+    <p>Has hecho clic <span id="contador">0</span> veces.</p>
+
+    <!-- Modal -->
+    <div class="modal fade" id="videoModal" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="videoModalLabel">Video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Incrustar el reproductor de video aquí -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xvFZjo5PgG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Agregar enlace al script de jQuery y al script de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Función para incrementar el contador cuando se hace clic en el botón
+        function contarClicks() {
+            // Obtener el elemento del contador
+            var contadorElemento = document.getElementById("contador");
+            // Obtener el valor actual del contador
+            var contador = parseInt(contadorElemento.textContent);
+            // Incrementar el contador
+            contador++;
+            // Actualizar el texto del contador
+            contadorElemento.textContent = contador;
         }
 
-        button {
-            background-color: white; /* Establece el color de fondo del botón a blanco */
-            color: green; /* Cambia el color del texto del botón a verde */
-            padding: 10px 20px; /* Añade espacio interno al botón */
-            font-size: 16px; /* Cambia el tamaño de la fuente del botón */
-            border: 2px solid green; /* Añade un borde al botón */
-            border-radius: 5px; /* Añade esquinas redondeadas al botón */
-            cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
-            transition: background-color 0.3s, color 0.3s; /* Agrega una transición suave al cambiar los colores */
-        }
+        // Obtener el botón
+        var boton = document.getElementById("boton");
 
-        button:hover {
-            background-color: transparent; /* Hace que el fondo del botón se vuelva transparente al pasar el cursor sobre él */
-            color: white; /* Cambia el color del texto del botón a blanco cuando se pasa el cursor sobre él */
-        }
+        // Añadir un event listener para el clic en el botón
+        boton.addEventListener("click", contarClicks);
+    </script>
 
-        button:focus {
-            outline: none; /* Elimina el contorno del botón cuando está enfocado */
-        }
-
-        /* Estilos del modal */
-        .modal {
-            display: none; /* Por defecto, ocultamos el modal */
-            position: fixed; /* Se posiciona de forma fija en la ventana */
-            z-index: 1; /* Asegura que el modal esté encima de todo */
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto; /* Permite desplazamiento si el contenido del modal es demasiado grande */
-            background-color: rgba(
+</body>
+</html>
