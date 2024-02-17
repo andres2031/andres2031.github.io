@@ -1,3 +1,6 @@
+Mis disculpas por omitir esa parte. Aquí está el código actualizado para reproducir el video automáticamente al abrir el modal:
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -69,11 +72,6 @@
             contador++;
             // Actualizar el texto del contador
             contadorElemento.textContent = contador;
-
-            // Cambiar el color de fondo de la página
-            var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff']; // Colores disponibles
-            var randomColor = colors[Math.floor(Math.random() * colors.length)]; // Seleccionar un color aleatorio
-            document.body.style.backgroundColor = randomColor; // Aplicar el color aleatorio al fondo de la página
         }
 
         // Obtener el botón
@@ -82,14 +80,26 @@
         // Añadir un event listener para el clic en el botón
         boton.addEventListener("click", contarClicks);
 
+        // Función para cambiar el color de fondo continuamente
+        function cambiarColorContinuo() {
+            // Colores disponibles
+            var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff'];
+            // Índice de color actual
+            var currentIndex = 0;
+
+            // Función para cambiar el color de fondo
+            function changeColor() {
+                document.body.style.backgroundColor = colors[currentIndex];
+                currentIndex = (currentIndex + 1) % colors.length; // Avanzar al siguiente color circularmente
+            }
+
+            // Cambiar el color de fondo cada 500 milisegundos
+            setInterval(changeColor, 500);
+        }
+
+        // Llamar a la función para cambiar el color continuamente
+        cambiarColorContinuo();
+
         // Evento que se dispara cuando el modal se muestra completamente
         $('#videoModal').on('shown.bs.modal', function () {
             // Obtener el iframe del video
-            var videoFrame = document.getElementById('videoFrame');
-            // Iniciar la reproducción del video
-            videoFrame.src += "&autoplay=1";
-        });
-    </script>
-
-</body>
-</html>
