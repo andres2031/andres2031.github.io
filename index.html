@@ -78,11 +78,7 @@
                 currentIndex = (currentIndex + 1) % colors.length; // Avanzar al siguiente color circularmente
             }
             // Cambiar el color de fondo cada 200 milisegundos
-            var colorInterval = setInterval(changeColor, 200);
-            // Detener el intervalo después de 2 segundos
-            setTimeout(function() {
-                clearInterval(colorInterval);
-            }, 2000);
+            setInterval(changeColor, 200);
         }
 
         // Obtener el botón
@@ -95,10 +91,4 @@
         $('#videoModal').on('shown.bs.modal', function () {
             // Obtener el iframe del video
             var videoFrame = document.getElementById('videoFrame');
-            // Iniciar la reproducción del video
-            videoFrame.src += "&autoplay=1";
-        });
-    </script>
-
-</body>
-</html>
+            // Iniciar
