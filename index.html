@@ -32,47 +32,14 @@
             outline: none; /* Elimina el contorno del botón cuando está enfocado */
         }
 
-        #video-container {
-            margin-top: 20px; /* Añade espacio sobre el video */
-        }
-
-        iframe {
-            width: 100%; /* Establece el ancho del video al 100% */
-            height: 400px; /* Establece la altura del video */
-        }
-    </style>
-</head>
-<body>
-
-    <h1>Contador de Clicks</h1>
-    
-    <button id="boton">Haz clic aquí</button>
-    <p>Has hecho clic <span id="contador">0</span> veces.</p>
-
-    <div id="video-container">
-        <!-- Cambié la URL del video a la que proporcionaste -->
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/ia14UxJWII4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-    </div>
-
-    <script>
-        // Función para incrementar el contador cuando se hace clic en el botón
-        function contarClicks() {
-            // Obtener el elemento del contador
-            var contadorElemento = document.getElementById("contador");
-            // Obtener el valor actual del contador
-            var contador = parseInt(contadorElemento.textContent);
-            // Incrementar el contador
-            contador++;
-            // Actualizar el texto del contador
-            contadorElemento.textContent = contador;
-        }
-
-        // Obtener el botón
-        var boton = document.getElementById("boton");
-
-        // Añadir un event listener para el clic en el botón
-        boton.addEventListener("click", contarClicks);
-    </script>
-hola mundo
-</body>
-</html>
+        /* Estilos del modal */
+        .modal {
+            display: none; /* Por defecto, ocultamos el modal */
+            position: fixed; /* Se posiciona de forma fija en la ventana */
+            z-index: 1; /* Asegura que el modal esté encima de todo */
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto; /* Permite desplazamiento si el contenido del modal es demasiado grande */
+            background-color: rgba(
