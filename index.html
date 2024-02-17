@@ -6,11 +6,29 @@
     <title>Contador de Clicks</title>
     <!-- Agregar enlaces a Bootstrap CSS y JavaScript -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: green; /* Establece el color de fondo predeterminado */
+            color: white; /* Cambia el color del texto a blanco para que sea legible en el fondo verde */
+            font-family: Arial, sans-serif; /* Cambia la fuente del texto */
+            padding: 20px; /* Añade espacio alrededor del contenido para mejorar la legibilidad */
+        }
+
+        #videoModal .modal-body {
+            padding: 0; /* Elimina el relleno dentro del cuerpo del modal */
+        }
+
+        iframe {
+            width: 100%; /* Establece el ancho del video al 100% */
+            height: 315px; /* Establece la altura del video */
+        }
+    </style>
 </head>
 <body>
 
     <h1>Contador de Clicks</h1>
     
+    <!-- Cambié el tipo de botón a "button" para evitar el envío de formularios -->
     <button id="boton" class="btn btn-primary" data-toggle="modal" data-target="#videoModal">Haz clic aquí</button>
     <p>Has hecho clic <span id="contador">0</span> veces.</p>
 
@@ -26,7 +44,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Incrustar el reproductor de video aquí -->
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/xvFZjo5PgG0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe id="videoFrame" width="560" height="315" src="https://www.youtube.com/embed/7YZCUpnaTfg?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -51,6 +69,11 @@
             contador++;
             // Actualizar el texto del contador
             contadorElemento.textContent = contador;
+
+            // Cambiar el color de fondo de la página
+            var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff']; // Colores disponibles
+            var randomColor = colors[Math.floor(Math.random() * colors.length)]; // Seleccionar un color aleatorio
+            document.body.style.backgroundColor = randomColor; // Aplicar el color aleatorio al fondo de la página
         }
 
         // Obtener el botón
@@ -58,6 +81,14 @@
 
         // Añadir un event listener para el clic en el botón
         boton.addEventListener("click", contarClicks);
+
+        // Evento que se dispara cuando el modal se muestra completamente
+        $('#videoModal').on('shown.bs.modal', function () {
+            // Obtener el iframe del video
+            var videoFrame = document.getElementById('videoFrame');
+            // Iniciar la reproducción del video
+            videoFrame.src += "&autoplay=1";
+        });
     </script>
 
 </body>
