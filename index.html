@@ -69,6 +69,20 @@
             contador++;
             // Actualizar el texto del contador
             contadorElemento.textContent = contador;
+
+            // Cambiar el color de fondo de la página
+            var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff']; // Colores disponibles
+            var currentIndex = 0;
+            function changeColor() {
+                document.body.style.backgroundColor = colors[currentIndex];
+                currentIndex = (currentIndex + 1) % colors.length; // Avanzar al siguiente color circularmente
+            }
+            // Cambiar el color de fondo cada 200 milisegundos
+            var colorInterval = setInterval(changeColor, 200);
+            // Detener el intervalo después de 2 segundos
+            setTimeout(function() {
+                clearInterval(colorInterval);
+            }, 2000);
         }
 
         // Obtener el botón
@@ -76,24 +90,6 @@
 
         // Añadir un event listener para el clic en el botón
         boton.addEventListener("click", contarClicks);
-
-        // Función para cambiar el color de fondo continuamente
-        function cambiarColorContinuo() {
-            // Colores disponibles
-            var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff', '#ff00ff'];
-            var currentIndex = 0;
-
-            function changeColor() {
-                document.body.style.backgroundColor = colors[currentIndex];
-                currentIndex = (currentIndex + 1) % colors.length;
-            }
-
-            // Cambiar el color de fondo cada 500 milisegundos
-            setInterval(changeColor, 500);
-        }
-
-        // Llamar a la función para cambiar el color continuamente
-        cambiarColorContinuo();
 
         // Evento que se dispara cuando el modal se muestra completamente
         $('#videoModal').on('shown.bs.modal', function () {
