@@ -118,7 +118,7 @@
   let lockBoard = false;
   let firstCard, secondCard;
   let lives = 3;
-  let score = localStorage.getItem('memoryGameScore') || 0; // Obtener el puntaje almacenado
+  let score = parseInt(localStorage.getItem('memoryGameScore')) || 0;
 
   function createBoard() {
     const gameBoard = document.querySelector('.memory-game');
@@ -212,7 +212,7 @@
     updateLivesDisplay();
     score = 0;
     updateScoreDisplay();
-    localStorage.setItem('memoryGameScore', score); // Guardar el puntaje en localStorage
+    localStorage.setItem('memoryGameScore', score);
     cards.forEach(card => {
       card.classList.remove('flipped');
       card.addEventListener('click', flipCard);
@@ -243,7 +243,7 @@
   function updateScore(points) {
     score += points;
     updateScoreDisplay();
-    localStorage.setItem('memoryGameScore', score); // Actualizar y guardar el puntaje en localStorage
+    localStorage.setItem('memoryGameScore', score);
   }
 
   function showVideo() {
