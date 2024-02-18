@@ -79,6 +79,23 @@
     color: black;
     font-weight: bold;
   }
+
+  .video-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  .video-container iframe {
+    width: 80%;
+    height: 80%;
+  }
 </style>
 </head>
 <body>
@@ -90,6 +107,10 @@
   <!-- Aquí se pueden agregar más cartas -->
 </div>
 
+<div class="video-container" id="video-container">
+  <iframe src="https://www.youtube.com/embed/7YZCUpnaTfg?autoplay=1" frameborder="0" allowfullscreen></iframe>
+</div>
+
 <script>
   const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
   let cards = [];
@@ -97,7 +118,7 @@
   let lockBoard = false;
   let firstCard, secondCard;
   let lives = 3;
-  let score = 0;
+  let score = localStorage.getItem('memoryGameScore') || 0; // Obtener el puntaje almacenado
 
   function createBoard() {
     const gameBoard = document.querySelector('.memory-game');
@@ -154,9 +175,7 @@
     disableCards();
     updateScore(10); // Incrementa el puntaje por cada pareja encontrada
     if (document.querySelectorAll('.memory-card.flipped').length === cards.length) {
-      setTimeout(() => {
-        resetGame();
-      }, 1000);
+      showVideo();
     }
   }
 
@@ -164,9 +183,7 @@
     unflipCards();
     decrementLives();
     if (lives === 0) {
-      setTimeout(() => {
-        resetGame();
-      }, 1000);
+      resetGame();
     }
   }
 
@@ -195,6 +212,7 @@
     updateLivesDisplay();
     score = 0;
     updateScoreDisplay();
+    localStorage.setItem('memoryGameScore', score); // Guardar el puntaje en localStorage
     cards.forEach(card => {
       card.classList.remove('flipped');
       card.addEventListener('click', flipCard);
@@ -225,6 +243,11 @@
   function updateScore(points) {
     score += points;
     updateScoreDisplay();
+    localStorage.setItem('memoryGameScore', score); // Actualizar y guardar el puntaje en localStorage
+  }
+
+  function showVideo() {
+    document.getElementById('video-container').style.display = 'flex';
   }
 
   createBoard();
