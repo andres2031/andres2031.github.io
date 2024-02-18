@@ -66,14 +66,25 @@
     position: absolute;
     bottom: 10px;
     left: 10px;
-    font-size: 18px;
-    color: #fff;
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+  }
+
+  .score {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
   }
 </style>
 </head>
 <body>
 
 <div class="lives">Vidas: <span id="lives">3</span></div>
+<div class="score">Puntaje: <span id="score">0</span></div>
 
 <div class="memory-game">
   <!-- Aquí se pueden agregar más cartas -->
@@ -86,6 +97,7 @@
   let lockBoard = false;
   let firstCard, secondCard;
   let lives = 3;
+  let score = 0;
 
   function createBoard() {
     const gameBoard = document.querySelector('.memory-game');
@@ -135,15 +147,12 @@
 
   function checkForMatch() {
     let isMatch = firstCard.dataset.symbol === secondCard.dataset.symbol;
-    isMatch ? disableCards() : unflipCards();
+    isMatch ? handleCorrectMatch() : handleIncorrectMatch();
   }
 
-  function disableCards() {
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard);
-
-    resetBoard();
-
+  function handleCorrectMatch() {
+    disableCards();
+    updateScore(10); // Incrementa el puntaje por cada pareja encontrada
     if (document.querySelectorAll('.memory-card.flipped').length === cards.length) {
       setTimeout(() => {
         resetGame();
@@ -151,22 +160,29 @@
     }
   }
 
-  function unflipCards() {
-    lockBoard = true;
-    lives--;
-    updateLivesDisplay();
-
+  function handleIncorrectMatch() {
+    unflipCards();
+    decrementLives();
     if (lives === 0) {
       setTimeout(() => {
         resetGame();
       }, 1000);
-    } else {
-      setTimeout(() => {
-        firstCard.classList.remove('flipped');
-        secondCard.classList.remove('flipped');
-        resetBoard();
-      }, 1000);
     }
+  }
+
+  function disableCards() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+    resetBoard();
+  }
+
+  function unflipCards() {
+    lockBoard = true;
+    setTimeout(() => {
+      firstCard.classList.remove('flipped');
+      secondCard.classList.remove('flipped');
+      resetBoard();
+    }, 1000);
   }
 
   function resetBoard() {
@@ -177,6 +193,8 @@
   function resetGame() {
     lives = 3;
     updateLivesDisplay();
+    score = 0;
+    updateScoreDisplay();
     cards.forEach(card => {
       card.classList.remove('flipped');
       card.addEventListener('click', flipCard);
@@ -193,6 +211,20 @@
 
   function updateLivesDisplay() {
     document.getElementById('lives').textContent = lives;
+  }
+
+  function decrementLives() {
+    lives--;
+    updateLivesDisplay();
+  }
+
+  function updateScoreDisplay() {
+    document.getElementById('score').textContent = score;
+  }
+
+  function updateScore(points) {
+    score += points;
+    updateScoreDisplay();
   }
 
   createBoard();
