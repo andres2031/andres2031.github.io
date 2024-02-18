@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Juego de Memoria</title>
 <style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #2ecc71; /* Verde */
+    background-image: url('https://via.placeholder.com/50x50'); /* URL de la imagen de tréboles */
+    overflow: hidden; /* Para evitar el desplazamiento horizontal */
+  }
+
   .memory-game {
     display: flex;
     flex-wrap: wrap;
@@ -69,7 +77,8 @@
 
   function createBoard() {
     const gameBoard = document.querySelector('.memory-game');
-    symbols.forEach(symbol => {
+    const shuffledSymbols = [...symbols, ...symbols].sort(() => Math.random() - 0.5);
+    shuffledSymbols.forEach(symbol => {
       const card = document.createElement('div');
       card.classList.add('memory-card');
       card.dataset.symbol = symbol;
@@ -93,7 +102,6 @@
     });
     cards = document.querySelectorAll('.memory-card');
     cards.forEach(card => card.addEventListener('click', flipCard));
-    shuffleCards();
   }
 
   function flipCard() {
@@ -147,19 +155,19 @@
     [firstCard, secondCard] = [null, null];
   }
 
-  function shuffleCards() {
-    cards.forEach(card => {
-      let randomPos = Math.floor(Math.random() * symbols.length);
-      card.style.order = randomPos;
-    });
-  }
-
   function resetGame() {
     cards.forEach(card => {
       card.classList.remove('flipped');
       card.addEventListener('click', flipCard);
     });
     shuffleCards();
+  }
+
+  function shuffleCards() {
+    cards.forEach(card => {
+      let randomPos = Math.floor(Math.random() * symbols.length);
+      card.style.order = randomPos;
+    });
   }
 
   createBoard();
