@@ -5,13 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Juego de Memoria</title>
 <style>
+  .memory-game {
+    display: flex;
+    flex-wrap: wrap;
+    width: 600px;
+    margin: auto;
+  }
+
   .memory-card {
     width: 100px;
     height: 100px;
-    background-color: #333;
     margin: 10px;
-    display: inline-block;
-    border-radius: 5px;
     perspective: 1000px;
   }
 
@@ -35,44 +39,62 @@
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    color: #fff;
     cursor: pointer;
     border-radius: 5px;
   }
 
   .memory-card .front-face {
     background-color: #555;
+    color: #fff;
   }
 
   .memory-card .back-face {
     background-color: #f00;
+    color: #fff;
   }
 </style>
 </head>
 <body>
 
 <div class="memory-game">
-  <div class="memory-card" data-framework="a">
-    <div class="card-inner">
-      <div class="card-face front-face">?</div>
-      <div class="card-face back-face">A</div>
-    </div>
-  </div>
-  <div class="memory-card" data-framework="a">
-    <div class="card-inner">
-      <div class="card-face front-face">?</div>
-      <div class="card-face back-face">A</div>
-    </div>
-  </div>
-  <!-- Agrega más cartas aquí -->
+  <!-- Aquí se pueden agregar más cartas -->
 </div>
 
 <script>
-  const cards = document.querySelectorAll('.memory-card');
-
+  const symbols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L'];
+  let cards = [];
   let hasFlippedCard = false;
   let lockBoard = false;
   let firstCard, secondCard;
+
+  function createBoard() {
+    const gameBoard = document.querySelector('.memory-game');
+    symbols.forEach(symbol => {
+      const card = document.createElement('div');
+      card.classList.add('memory-card');
+      card.dataset.symbol = symbol;
+
+      const innerCard = document.createElement('div');
+      innerCard.classList.add('card-inner');
+
+      const frontFace = document.createElement('div');
+      frontFace.classList.add('card-face', 'front-face');
+      frontFace.textContent = '?';
+
+      const backFace = document.createElement('div');
+      backFace.classList.add('card-face', 'back-face');
+      backFace.textContent = symbol;
+
+      innerCard.appendChild(frontFace);
+      innerCard.appendChild(backFace);
+
+      card.appendChild(innerCard);
+      gameBoard.appendChild(card);
+    });
+    cards = document.querySelectorAll('.memory-card');
+    cards.forEach(card => card.addEventListener('click', flipCard));
+    shuffleCards();
+  }
 
   function flipCard() {
     if (lockBoard) return;
@@ -92,7 +114,7 @@
   }
 
   function checkForMatch() {
-    let isMatch = firstCard.dataset.framework === secondCard.dataset.framework;
+    let isMatch = firstCard.dataset.symbol === secondCard.dataset.symbol;
     isMatch ? disableCards() : unflipCards();
   }
 
@@ -101,6 +123,12 @@
     secondCard.removeEventListener('click', flipCard);
 
     resetBoard();
+
+    if (document.querySelectorAll('.memory-card.flipped').length === cards.length) {
+      setTimeout(() => {
+        resetGame();
+      }, 1000);
+    }
   }
 
   function unflipCards() {
@@ -119,14 +147,22 @@
     [firstCard, secondCard] = [null, null];
   }
 
-  (function shuffle() {
+  function shuffleCards() {
     cards.forEach(card => {
-      let randomPos = Math.floor(Math.random() * 12);
+      let randomPos = Math.floor(Math.random() * symbols.length);
       card.style.order = randomPos;
     });
-  })();
+  }
 
-  cards.forEach(card => card.addEventListener('click', flipCard));
+  function resetGame() {
+    cards.forEach(card => {
+      card.classList.remove('flipped');
+      card.addEventListener('click', flipCard);
+    });
+    shuffleCards();
+  }
+
+  createBoard();
 </script>
 
 </body>
