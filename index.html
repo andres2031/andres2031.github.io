@@ -11,6 +11,7 @@
     background-color: #2ecc71; /* Verde */
     background-image: url('https://via.placeholder.com/50x50'); /* URL de la imagen de tréboles */
     overflow: hidden; /* Para evitar el desplazamiento horizontal */
+    font-family: Arial, sans-serif;
   }
 
   .memory-game {
@@ -60,9 +61,19 @@
     background-color: #f00;
     color: #fff;
   }
+
+  .lives {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 18px;
+    color: #fff;
+  }
 </style>
 </head>
 <body>
+
+<div class="lives">Vidas: <span id="lives">3</span></div>
 
 <div class="memory-game">
   <!-- Aquí se pueden agregar más cartas -->
@@ -74,6 +85,7 @@
   let hasFlippedCard = false;
   let lockBoard = false;
   let firstCard, secondCard;
+  let lives = 3;
 
   function createBoard() {
     const gameBoard = document.querySelector('.memory-game');
@@ -141,13 +153,20 @@
 
   function unflipCards() {
     lockBoard = true;
+    lives--;
+    updateLivesDisplay();
 
-    setTimeout(() => {
-      firstCard.classList.remove('flipped');
-      secondCard.classList.remove('flipped');
-
-      resetBoard();
-    }, 1000);
+    if (lives === 0) {
+      setTimeout(() => {
+        resetGame();
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        firstCard.classList.remove('flipped');
+        secondCard.classList.remove('flipped');
+        resetBoard();
+      }, 1000);
+    }
   }
 
   function resetBoard() {
@@ -156,6 +175,8 @@
   }
 
   function resetGame() {
+    lives = 3;
+    updateLivesDisplay();
     cards.forEach(card => {
       card.classList.remove('flipped');
       card.addEventListener('click', flipCard);
@@ -168,6 +189,10 @@
       let randomPos = Math.floor(Math.random() * symbols.length);
       card.style.order = randomPos;
     });
+  }
+
+  function updateLivesDisplay() {
+    document.getElementById('lives').textContent = lives;
   }
 
   createBoard();
