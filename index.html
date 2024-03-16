@@ -6,25 +6,38 @@
     <title>Empresa de Diseño Web</title>
     <style>
         body {
-            background-color: #339999; /* Azul oscuro (modo oscuro) */
-            color: #fff; /* Texto blanco */
+            background-color: #f8f9fa; /* Cambiado a un tono más claro */
+            color: #333; /* Texto negro */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
-        header {
-            background-color: #339999; /* Mismo color que el fondo */
+        header, footer {
+            background-color: #339999; /* Azul oscuro (modo oscuro) */
+            color: #fff; /* Texto blanco */
             padding: 20px;
             text-align: center;
         }
+        nav {
+            background-color: #0056b3; /* Azul más oscuro para el menú de navegación */
+            padding: 10px;
+        }
+        nav a {
+            color: #fff; /* Texto blanco para los enlaces */
+            text-decoration: none; /* Sin subrayado en los enlaces */
+            margin: 0 10px; /* Espacio entre enlaces */
+        }
+        nav a:hover {
+            text-decoration: underline; /* Subrayado al pasar el ratón */
+        }
         section {
-            background-color: #336699; /* Azul eléctrico un poco más vivo */
+            background-color: #e9ecef; /* Gris claro */
             padding: 20px;
             margin: 20px;
             border-radius: 10px;
         }
         h1, h2 {
-            border-bottom: 2px solid #fff; /* Borde blanco en los títulos */
+            border-bottom: 2px solid #339999; /* Borde azul en los títulos */
             padding-bottom: 5px;
         }
         p {
@@ -41,6 +54,11 @@
 <body>
     <header>
         <h1>Bienvenido a nuestra empresa de diseño web</h1>
+        <nav>
+            <a href="#">Inicio</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
+        </nav>
     </header>
     <section>
         <h2>¿Qué hacemos?</h2>
@@ -62,7 +80,7 @@
         <!-- Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen guardada en tu dispositivo -->
     </section>
     <footer>
-   <br> <p>&copy; 2024 Empresa de Diseño Web. Todos los derechos reservados.</p>
+        <p>&copy; 2024 Empresa de Diseño Web. Todos los derechos reservados.</p>
     </footer>
 </body>
 </html>
