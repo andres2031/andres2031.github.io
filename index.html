@@ -29,10 +29,15 @@
         <p>Nuestra visión es ser líderes en el campo del diseño web, ofreciendo soluciones innovadoras y de alta calidad que superen las expectativas de nuestros clientes.</p>
     </section>
     <section id="contacto" class="hidden">
-        <h2>Video de contacto</h2>
-        <div id="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/v8H5ACDqlHo" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <h2>Cátedra sobre Internet</h2>
+        <p>Ofrecemos cursos y charlas sobre el funcionamiento de Internet, incluyendo temas como:</p>
+        <ul>
+            <li>Protocolo de transferencia de hipertexto (HTTP)</li>
+            <li>Lenguajes de programación web como HTML, CSS, JavaScript, etc.</li>
+            <li>Arquitectura cliente-servidor</li>
+            <li>Seguridad en línea</li>
+        </ul>
+        <!-- Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen guardada en tu dispositivo -->
     </section>
     <footer>
         <p>&copy; 2024 Empresa de Diseño Web. Todos los derechos reservados.</p>
@@ -49,13 +54,6 @@
             // Muestra la sección seleccionada
             var selectedSection = document.getElementById(sectionId);
             selectedSection.classList.remove('hidden');
-
-            // Si se selecciona la sección de contacto, pausa el video
-            if (sectionId === 'contacto') {
-                // Pausa el video si ya se está reproduciendo
-                var videoFrame = document.getElementById('video-container').querySelector('iframe');
-                videoFrame.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
-            }
         }
     </script>
 </body>
