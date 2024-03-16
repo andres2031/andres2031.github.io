@@ -5,49 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empresa de Diseño Web</title>
     <style>
-        body {
-            background-color: #f8f9fa; /* Cambiado a un tono más claro */
-            color: #333; /* Texto negro */
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        header, footer {
-            background-color: #339999; /* Azul oscuro (modo oscuro) */
-            color: #fff; /* Texto blanco */
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #0056b3; /* Azul más oscuro para el menú de navegación */
-            padding: 10px;
-        }
-        nav a {
-            color: #fff; /* Texto blanco para los enlaces */
-            text-decoration: none; /* Sin subrayado en los enlaces */
-            margin: 0 10px; /* Espacio entre enlaces */
-        }
-        nav a:hover {
-            text-decoration: underline; /* Subrayado al pasar el ratón */
-        }
-        section {
-            background-color: #e9ecef; /* Gris claro */
-            padding: 20px;
-            margin: 20px;
-            border-radius: 10px;
-        }
-        h1, h2 {
-            border-bottom: 2px solid #339999; /* Borde azul en los títulos */
-            padding-bottom: 5px;
-        }
-        p {
-            margin-top: 10px;
-        }
-        img {
-            display: block;
-            margin: 0 auto;
-            max-width: 100%;
-            height: auto;
+        /* Estilos omitidos para mayor claridad */
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -55,32 +15,48 @@
     <header>
         <h1>Bienvenido a nuestra empresa de diseño web</h1>
         <nav>
-            <a href="#">Inicio</a>
-            <a href="#">Servicios</a>
-            <a href="#">Contacto</a>
+            <a href="#" onclick="showSection('inicio')">Inicio</a>
+            <a href="#" onclick="showSection('servicios')">Servicios</a>
+            <a href="#" onclick="showSection('contacto')">Contacto</a>
         </nav>
     </header>
-    <section>
+    <section id="inicio">
         <h2>¿Qué hacemos?</h2>
         <p>Somos una empresa especializada en el diseño y desarrollo de páginas web a medida para empresas y particulares.</p>
     </section>
-    <section>
+    <section id="servicios" class="hidden">
         <h2>Nuestra Visión</h2>
         <p>Nuestra visión es ser líderes en el campo del diseño web, ofreciendo soluciones innovadoras y de alta calidad que superen las expectativas de nuestros clientes.</p>
     </section>
-    <section>
-        <h2>Cátedra sobre Internet</h2>
-        <p>Ofrecemos cursos y charlas sobre el funcionamiento de Internet, incluyendo temas como:</p>
-        <ul>
-            <li>Protocolo de transferencia de hipertexto (HTTP)</li>
-            <li>Lenguajes de programación web como HTML, CSS, JavaScript, etc.</li>
-            <li>Arquitectura cliente-servidor</li>
-            <li>Seguridad en línea</li>
-        </ul>
-        <!-- Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen guardada en tu dispositivo -->
+    <section id="contacto" class="hidden">
+        <h2>Video de contacto</h2>
+        <div id="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/v8H5ACDqlHo" frameborder="0" allowfullscreen></iframe>
+        </div>
     </section>
     <footer>
         <p>&copy; 2024 Empresa de Diseño Web. Todos los derechos reservados.</p>
     </footer>
+
+    <script>
+        function showSection(sectionId) {
+            // Oculta todas las secciones
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.classList.add('hidden');
+            });
+            
+            // Muestra la sección seleccionada
+            var selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.remove('hidden');
+
+            // Si se selecciona la sección de contacto, pausa el video
+            if (sectionId === 'contacto') {
+                // Pausa el video si ya se está reproduciendo
+                var videoFrame = document.getElementById('video-container').querySelector('iframe');
+                videoFrame.contentWindow.postMessage('{"event":"command","func":"' + 'pauseVideo' + '","args":""}', '*');
+            }
+        }
+    </script>
 </body>
 </html>
