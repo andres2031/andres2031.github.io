@@ -5,22 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Empresa de Diseño Web</title>
     <style>
-        /* Estilos omitidos para mayor claridad */
         body {
+            background-color: #f8f9fa; /* Fondo gris claro */
+            color: #333; /* Texto negro */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f8f9fa; /* Fondo gris claro */
-            color: #333; /* Texto negro */
         }
         header {
-            background-color: #339999; /* Azul oscuro (modo oscuro) */
+            background-color: #339999; /* Azul oscuro para el encabezado */
             color: #fff; /* Texto blanco */
             padding: 20px;
             text-align: center;
         }
         nav {
-            margin-top: 10px;
+            background-color: #0056b3; /* Azul oscuro para el menú de navegación */
+            padding: 10px;
         }
         nav a {
             color: #fff; /* Texto blanco para los enlaces */
@@ -39,12 +39,18 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
         h2 {
-            color: #2c3e50; /* Color de título oscuro */
-            border-bottom: 2px solid #2c3e50; /* Borde azul oscuro en los títulos */
+            color: #333; /* Color de título oscuro */
+            border-bottom: 2px solid #339999; /* Borde azul en los títulos */
             padding-bottom: 5px;
+        }
+        p {
+            margin-top: 10px;
         }
         ul {
             margin-top: 10px;
+        }
+        li {
+            margin-left: 20px;
         }
         footer {
             background-color: #339999; /* Azul oscuro para el pie de página */
@@ -54,6 +60,9 @@
             position: absolute;
             bottom: 0;
             width: 100%;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -69,19 +78,20 @@
     <section id="inicio">
         <h2>¿Qué hacemos?</h2>
         <p>Somos una empresa especializada en el diseño y desarrollo de páginas web a medida para empresas y particulares.</p>
-        <p>Ofrecemos servicios de diseño web, desarrollo de aplicaciones web y móviles, diseño gráfico, optimización de SEO, y mucho más.</p>
     </section>
     <section id="servicios" class="hidden">
         <h2>Nuestra Visión</h2>
         <p>Nuestra visión es ser líderes en el campo del diseño web, ofreciendo soluciones innovadoras y de alta calidad que superen las expectativas de nuestros clientes.</p>
-        <p>En nuestro enfoque, combinamos la estética creativa con la funcionalidad sólida, asegurando que cada proyecto que entregamos sea único y efectivo.</p>
     </section>
     <section id="contacto" class="hidden">
-        <h2>Contáctanos</h2>
-        <p>Para más información, no dudes en ponerte en contacto con nosotros. Estamos aquí para ayudarte.</p>
-        <div>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/HvV6-rvECmQ" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <h2>Cátedra sobre Internet</h2>
+        <p>Ofrecemos cursos y charlas sobre el funcionamiento de Internet, incluyendo temas como:</p>
+        <ul>
+            <li>Protocolo de transferencia de hipertexto (HTTP)</li>
+            <li>Lenguajes de programación web como HTML, CSS, JavaScript, etc.</li>
+            <li>Arquitectura cliente-servidor</li>
+            <li>Seguridad en línea</li>
+        </ul>
     </section>
     <footer>
         <p>&copy; 2024 Empresa de Diseño Web. Todos los derechos reservados.</p>
