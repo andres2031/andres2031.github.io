@@ -6,57 +6,63 @@
     <title>Empresa de Diseño Web</title>
     <style>
         body {
-            background-color: #f8f9fa; /* Cambiado a un tono más claro */
+            background-color: #f8f9fa; /* Fondo gris claro */
             color: #333; /* Texto negro */
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
         }
         header {
-            background-color: #339999; /* Azul oscuro (modo oscuro) */
+            background-color: #339999; /* Azul oscuro para el encabezado */
             color: #fff; /* Texto blanco */
             padding: 20px;
             text-align: center;
         }
         nav {
-            background-color: #0056b3; /* Azul más oscuro para el menú de navegación */
+            background-color: #0056b3; /* Azul oscuro para el menú de navegación */
             padding: 10px;
         }
         nav a {
             color: #fff; /* Texto blanco para los enlaces */
             text-decoration: none; /* Sin subrayado en los enlaces */
             margin: 0 10px; /* Espacio entre enlaces */
+            transition: color 0.3s; /* Transición suave para el color */
         }
         nav a:hover {
-            text-decoration: underline; /* Subrayado al pasar el ratón */
+            color: #d1d8e0; /* Color de enlace al pasar el ratón */
         }
         section {
-            background-color: #e9ecef; /* Gris claro */
+            background-color: #fff; /* Fondo blanco para las secciones */
             padding: 20px;
             margin: 20px;
             border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
         }
         h2 {
+            color: #333; /* Color de título oscuro */
             border-bottom: 2px solid #339999; /* Borde azul en los títulos */
             padding-bottom: 5px;
-            color: #333; /* Texto negro */
         }
         p {
             margin-top: 10px;
-            color: #333; /* Texto negro */
         }
         ul {
             margin-top: 10px;
-            color: #333; /* Texto negro */
         }
         li {
-            color: #333; /* Texto negro */
+            margin-left: 20px;
         }
         footer {
-            background-color: #339999; /* Azul oscuro (modo oscuro) */
+            background-color: #339999; /* Azul oscuro para el pie de página */
             color: #fff; /* Texto blanco */
             padding: 20px;
             text-align: center;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -86,7 +92,6 @@
             <li>Arquitectura cliente-servidor</li>
             <li>Seguridad en línea</li>
         </ul>
-        <!-- Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de la imagen guardada en tu dispositivo -->
     </section>
     <footer>
         <p>&copy; 2024 Empresa de Diseño Web. Todos los derechos reservados.</p>
