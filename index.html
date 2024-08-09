@@ -11,12 +11,11 @@
             padding: 0;
         }
         body {
-            background: linear-gradient(to bottom, #f8f9fa, #e0e0e0);
+            background-color: #f8f9fa;
             color: #333;
             font-family: Arial, sans-serif;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
         }
         header {
             background-color: #0772e6;
@@ -65,10 +64,9 @@
             color: #fff;
             padding: 20px;
             text-align: center;
-            position: absolute;
+            position: fixed;
             bottom: 0;
             width: 100%;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
         }
         .hidden {
             display: none;
@@ -142,4 +140,19 @@
             <li>Seguridad en línea</li>
         </ul>
     </section>
-    <
+    <footer>
+        <p>&copy; 2024 Empresa de Diseño Web. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function showSection(sectionId) {
+            var sections = document.querySelectorAll('section');
+            sections.forEach(function(section) {
+                section.classList.add('hidden');
+            });
+            var selectedSection = document.getElementById(sectionId);
+            selectedSection.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
