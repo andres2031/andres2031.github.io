@@ -47,7 +47,9 @@
         h2 {
             color: #333;
             border-bottom: 2px solid #0772e6;
-            padding-bottom: 5px;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
         }
         p {
             margin-top: 10px;
@@ -55,9 +57,10 @@
         }
         ul {
             margin-top: 10px;
+            padding-left: 20px;
         }
         li {
-            margin-left: 20px;
+            margin-bottom: 5px;
         }
         footer {
             background-color: #0772e6;
@@ -73,20 +76,22 @@
         }
         .services-content {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
             align-items: center;
-            justify-content: center;
+            gap: 20px; /* Espacio entre columnas */
+        }
+        .services-text, .services-image {
+            max-width: 800px;
         }
         .services-text {
-            max-width: 600px;
-            margin-right: 20px;
+            text-align: center;
         }
         .services-text p {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
         .services-image img {
             width: 100%;
-            max-width: 400px;
+            max-width: 500px;
             border-radius: 10px;
         }
     </style>
@@ -102,27 +107,24 @@
     </header>
     <section id="inicio">
         <h2>¿Qué hacemos?</h2>
-        <p>Somos una empresa especializada en el diseño y desarrollo de páginas web. Nuestro propósito es dar servicio a personas desorientadas en el mundo del Internet, ayudándolas a mejorar su visibilidad, promoviendo sus productos o servicios y proporcionando una experiencia positiva para los usuarios que visitan su página web.</p>
+        <p>Somos una empresa especializada en el diseño y desarrollo de páginas web. Nuestro propósito es ayudar a personas y empresas a mejorar su visibilidad en Internet y proporcionar una experiencia positiva a los visitantes de su sitio web.</p>
         <img src="12345.jpg" alt="Imagen representativa"/>
     </section>
     <section id="servicios" class="hidden">
-        <h2>Ofrecemos</h2>
+        <h2>Servicios que ofrecemos</h2>
         <div class="services-content">
             <div class="services-text">
                 <p>
-                    Crear un sitio web fácil de usar que represente bien la marca del cliente y anime a la gente a interactuar es una prioridad para nosotros. Nos especializamos en diseñar plataformas digitales intuitivas y atractivas que no solo capturen la esencia de la marca del cliente, sino que también proporcionen una experiencia de usuario fluida y agradable.
+                    Creamos sitios web intuitivos y atractivos que reflejan la esencia de la marca del cliente. Nos aseguramos de que cada detalle esté alineado con la imagen y mensaje del cliente para proporcionar una experiencia de usuario fluida.
                 </p>
                 <p>
-                    Nuestro enfoque se basa en la comprensión profunda de las necesidades del cliente y de su audiencia objetivo. Analizamos cuidadosamente los valores, la misión y la identidad visual de la marca para garantizar que cada elemento del sitio web esté alineado con su imagen y mensaje. Desde el diseño hasta la funcionalidad, cada detalle se ajusta para reflejar la personalidad de la marca y crear una conexión auténtica con los visitantes.
+                    Nos enfocamos en la optimización de la interacción del usuario para aumentar el compromiso y la conversión. Implementamos herramientas y características que faciliten la navegación y la interacción.
                 </p>
                 <p>
-                    Además, nos enfocamos en optimizar la interacción del usuario para fomentar un mayor compromiso. Implementamos características y herramientas que faciliten la navegación, la interacción y la conversión. Ya sea a través de llamados a la acción estratégicos, formularios intuitivos o contenido multimedia atractivo, nuestro objetivo es mantener a los visitantes interesados y motivados para explorar más y tomar medidas que beneficien tanto al usuario como al cliente.
+                    Utilizamos técnicas de optimización y marketing digital para mejorar la visibilidad y el alcance del sitio web, incluyendo prácticas de SEO y la creación de contenido relevante.
                 </p>
                 <p>
-                    Al centrarnos en atraer a más personas interesadas en los productos o servicios del cliente, utilizamos técnicas de optimización y marketing digital para aumentar la visibilidad y el alcance del sitio web. Esto incluye la integración de prácticas de SEO, la creación de contenido relevante y la implementación de estrategias para captar y convertir visitantes en clientes potenciales.
-                </p>
-                <p>
-                    En resumen, nuestro compromiso es construir sitios web que no solo representen de manera efectiva la marca del cliente, sino que también fomenten una mayor interacción y generen un impacto positivo en su audiencia. Nos esforzamos por crear plataformas digitales que sean no solo funcionales y estéticamente agradables, sino también herramientas poderosas para alcanzar y superar los objetivos comerciales del cliente.
+                    Nuestro objetivo es construir sitios web funcionales y estéticamente agradables que no solo representen bien la marca, sino que también generen un impacto positivo en su audiencia y ayuden a alcanzar los objetivos comerciales.
                 </p>
             </div>
             <div class="services-image">
@@ -132,10 +134,10 @@
     </section>
     <section id="Acerca-de" class="hidden">
         <h2>Cátedra sobre Internet</h2>
-        <p>El concepto principal de nuestro proyecto es idealizar a las personas de que el servicio que se ofrece es brindar conocimiento en que hay otras maneras de usar la tecnología. Como la creación de páginas para uso propio o de una entidad empresarial.</p>
+        <p>En nuestro proyecto, nos enfocamos en enseñar cómo aprovechar la tecnología para crear páginas web útiles, ya sea para uso personal o empresarial. Abordamos temas como:</p>
         <ul>
             <li>Protocolo de transferencia de hipertexto (HTTP)</li>
-            <li>Lenguajes de programación web como HTML, CSS, JavaScript, etc.</li>
+            <li>Lenguajes de programación web como HTML, CSS, JavaScript</li>
             <li>Arquitectura cliente-servidor</li>
             <li>Seguridad en línea</li>
         </ul>
